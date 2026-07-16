@@ -62,7 +62,21 @@
   font-size: 1.1rem; writing-mode: vertical-rl; letter-spacing: 0.35em;
 }
 
+/* Image cover variant: hero image cards */
+.mn-cover--img { padding: 0; background: none; aspect-ratio: 16 / 9; overflow: hidden; }
+.mn-card--featured .mn-cover--img { aspect-ratio: 1067 / 551; min-height: 0; }
+.mn-cover--img img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+.mn-card:hover .mn-cover--img img { transform: scale(1.03); }
+
 .mn-card-body { padding: var(--s-5); display: flex; flex-direction: column; gap: var(--s-3); flex: 1; }
+.mn-card-title {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(1.3rem, 1rem + 1.2vw, 1.9rem); line-height: 1.18;
+  color: var(--ink); max-width: 30ch;
+}
 .mn-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
 .mn-tag {
   font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
