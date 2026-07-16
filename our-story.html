@@ -83,12 +83,11 @@
           <p>Before Jing sold anything, it was a research project: a science-backed Traditional Chinese Medicine formulary. We spent a year reviewing the clinical evidence for TCM herbs — the active compounds, the mechanisms, the trial quality — and rated it honestly, herb by herb.</p>
           <p>We published the evidence whether it supported a herb or not. If a meta-analysis weakened the case, we updated the rating. That discipline — <strong>if we can't cite it, we won't claim it</strong> — became the company.</p>
           <p>Aura is what happened when four botanicals earned a product.</p>
-          <div class="os-stats">
-            <div class="os-stat reveal"><b>4,800+</b><span>Studies reviewed</span></div>
-            <div class="os-stat reveal"><b>55</b><span>Herbs catalogued</span></div>
-            <div class="os-stat reveal"><b>12 mo</b><span>In the literature</span></div>
+          <div class="os-stats" data-os-stats>
+            <div class="os-stat reveal"><b data-count-to="4800" data-suffix="+">0</b><span>Studies reviewed</span></div>
+            <div class="os-stat reveal"><b data-count-to="12" data-suffix=" mo">0</b><span>In the literature</span></div>
+            <div class="os-stat reveal"><b data-count-countless>0</b><span>Mental breakdowns</span></div>
           </div>
-          <p style="margin-top:var(--s-6)"><a class="sd-arrow-link" href="https://jingherbal.com/about" target="_blank" rel="noopener">Read the full research story <span aria-hidden="true">→</span></a></p>
         </div>
       </div>
     </section>
@@ -100,7 +99,7 @@
           <span class="eyebrow eyebrow--terra">Why we're different</span>
           <h2 class="display">Most brands show you a mood.<br><em>We show you our work.</em></h2>
         </div>
-        <ul class="sd-fact-grid" style="max-width:none;grid-template-columns:repeat(4,1fr);gap:var(--s-5)">
+        <ul class="sd-fact-grid" style="max-width:none;grid-template-columns:repeat(3,1fr);gap:var(--s-5)">
           <li class="sd-fact reveal">
             <span class="sd-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 12h11M4 5h9M4 19h13"/></svg></span>
             <span>Full doses on the label — no proprietary blends</span>
@@ -108,10 +107,6 @@
           <li class="sd-fact reveal">
             <span class="sd-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg></span>
             <span>Only authorised nutrient claims</span>
-          </li>
-          <li class="sd-fact reveal">
-            <span class="sd-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2"/></svg></span>
-            <span>Evidence rated honestly — even when unflattering</span>
           </li>
           <li class="sd-fact reveal">
             <span class="sd-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.2-6.5-10.2a6.5 6.5 0 0 1 13 0C18.5 15.8 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></svg></span>
@@ -208,5 +203,44 @@
   </aside>
 
   <script src="js/store-au.js"></script>
+  <script>
+    // Stats count up when scrolled into view; the last one gives up counting.
+    (function () {
+      const wrap = document.querySelector("[data-os-stats]");
+      if (!wrap || !("IntersectionObserver" in window)) return;
+      const ease = (t) => 1 - Math.pow(1 - t, 3);
+      function run(el, to, suffix) {
+        const t0 = performance.now(), dur = 1600;
+        (function tick(now) {
+          const p = Math.min((now - t0) / dur, 1);
+          el.textContent = Math.round(ease(p) * to).toLocaleString("en-AU") + (p === 1 ? suffix : "");
+          if (p < 1) requestAnimationFrame(tick);
+        })(t0);
+      }
+      function runCountless(el) {
+        const t0 = performance.now(), dur = 1800;
+        (function tick(now) {
+          const p = Math.min((now - t0) / dur, 1);
+          if (p < 1) {
+            el.textContent = Math.round(ease(p) * 8000 + Math.random() * 900).toLocaleString("en-AU");
+            requestAnimationFrame(tick);
+          } else {
+            el.textContent = "Countless";
+          }
+        })(t0);
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          io.disconnect();
+          wrap.querySelectorAll("[data-count-to]").forEach((el) =>
+            run(el, parseInt(el.dataset.countTo, 10), el.dataset.suffix || ""));
+          const c = wrap.querySelector("[data-count-countless]");
+          if (c) runCountless(c);
+        });
+      }, { threshold: 0.4 });
+      io.observe(wrap);
+    })();
+  </script>
 </body>
 </html>

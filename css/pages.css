@@ -38,7 +38,7 @@
 }
 @media (max-width: 680px) { .os-stats { grid-template-columns: 1fr; } }
 .os-stat { border-top: 2px solid var(--terra); padding-top: var(--s-3); }
-.os-stat b { display: block; font-family: var(--font-display); font-weight: 500; font-size: var(--text-3xl); color: var(--ink); }
+.os-stat b { display: block; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.9rem, 1.3rem + 1.8vw, 2.9rem); color: var(--ink); white-space: nowrap; }
 .os-stat span { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); }
 
 /* Mission band */
