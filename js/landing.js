@@ -48,6 +48,54 @@
     });
   }
 
+  /* Nourish animation refs (statement section) */
+  const nourish = document.querySelector("[data-nourish]");
+  const nr = {};
+  if (nourish) {
+    ["stick", "particles", "mesh", "glow", "surf1", "surf2", "sheen", "labels"].forEach((k) => {
+      nr[k] = nourish.querySelector(`[data-nr="${k}"]`);
+    });
+    nr.dots = nourish.querySelectorAll(`[data-nr="particles"] circle`);
+    // Prepare mesh strokes for draw-in
+    nourish.querySelectorAll(`[data-nr="mesh"] path`).forEach((p) => {
+      const len = p.getTotalLength();
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+    });
+  }
+
+  function drawNourish(p) {
+    if (!nourish) return;
+    const ease = (t) => 1 - Math.pow(1 - t, 2);
+    // Stick tips in and settles
+    nr.stick.style.transform = `translateY(${(1 - ease(clamp(p * 2.2, 0, 1))) * -26}px)`;
+    nr.stick.style.opacity = clamp(p * 3, 0, 1);
+    // Particles rain toward the skin continuously as the page scrolls
+    const presence = clamp(p * 4, 0, 1);
+    nr.dots.forEach((c, i) => {
+      const local = (p * 2.4 + i * 0.11) % 1;
+      c.style.transform = `translateY(${local * 150}px)`;
+      c.style.opacity = String(Math.sin(local * Math.PI) * presence);
+    });
+    // Collagen mesh draws in through the middle of the scroll
+    nourish.querySelectorAll(`[data-nr="mesh"] path`).forEach((path, i) => {
+      const len = parseFloat(path.style.strokeDasharray);
+      const local = clamp((p - 0.25 - i * 0.1) / 0.45, 0, 1);
+      path.style.strokeDashoffset = String(len * (1 - ease(local)));
+      path.style.opacity = String(0.25 + local * 0.75);
+    });
+    // Glow builds, dull surface crossfades to plumped surface
+    nr.glow.style.opacity = clamp((p - 0.3) / 0.5, 0, 1);
+    const plump = clamp((p - 0.45) / 0.4, 0, 1);
+    nr.surf1.style.opacity = String(1 - plump);
+    nr.surf2.style.opacity = String(plump);
+    nr.surf2.style.transform = `translateY(${(1 - plump) * 6}px)`;
+    // Sheen sweeps across once plumped
+    const sh = clamp((p - 0.78) / 0.22, 0, 1);
+    nr.sheen.style.opacity = String(sh > 0 ? Math.sin(sh * Math.PI) * 0.9 : 0);
+    nr.sheen.style.transform = `translateX(${sh * 150}px)`;
+  }
+
   const mech = document.querySelector("[data-mech]");
   const mechSteps = Array.from(document.querySelectorAll("[data-mech-step]"));
   const mechDots = Array.from(document.querySelectorAll(".sd-mech-progress span"));
@@ -71,6 +119,9 @@
       const lit = Math.round(p * 1.25 * words.length);
       words.forEach((w, i) => w.classList.toggle("is-lit", i < lit));
       stLink && stLink.classList.toggle("is-in", p > 0.85);
+      drawNourish(p);
+    } else if (reduced) {
+      drawNourish(1);
     }
 
     if (!reduced && mech && mechSteps.length && window.matchMedia("(min-width: 901px)").matches) {
