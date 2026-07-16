@@ -263,15 +263,31 @@ const JING = (() => {
     });
   }
 
+  // Newsletter forms post to the Brevo "Join the Jing Community" form endpoint
+  const BREVO_FORM_URL = "https://91b1bfc9.sibforms.com/serve/MUIFAE2j0NTI905dJ163yyDTrlGdRTnnKmKySUnfr7Y0GgKZnhnSAcu0I3Xt9zP6X1sU4Efr8x1UXo6RESffmsD5DahS-n-AqGlpukD9JNC7JYe3enl_eZnYJ7XcnC4i2rZsPl5w1RnzNs9VwatGk6j-mI4zBkYQurI7MDsdeOpSqbrp1SHqub9PeEsTH-iwD7Vh6lEJbUuilq4aFw==";
+
   function initNewsletter() {
     document.querySelectorAll("[data-newsletter]").forEach((form) => {
-      form.addEventListener("submit", (ev) => {
+      form.addEventListener("submit", async (ev) => {
         ev.preventDefault();
         const email = form.querySelector("input[type=email]");
         const msg = form.parentElement.querySelector(".form-msg");
+        const btn = form.querySelector("button[type=submit]");
         if (!email.checkValidity()) { email.reportValidity(); return; }
-        if (msg) msg.textContent = "Welcome to the ritual — check your inbox.";
-        form.reset();
+        if (btn) btn.disabled = true;
+        try {
+          const data = new FormData();
+          data.append("EMAIL", email.value);
+          data.append("email_address_check", ""); // Brevo honeypot — must be empty
+          data.append("locale", "en");
+          await fetch(BREVO_FORM_URL, { method: "POST", body: data, mode: "no-cors" });
+          if (msg) msg.textContent = "Welcome to the ritual — check your inbox.";
+          form.reset();
+        } catch (e) {
+          if (msg) msg.textContent = "Something went wrong — please try again.";
+        } finally {
+          if (btn) btn.disabled = false;
+        }
       });
     });
   }
