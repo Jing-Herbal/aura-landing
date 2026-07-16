@@ -136,6 +136,28 @@
 }
 .mn-prose .mn-sign { font-style: italic; color: var(--ink-mute); }
 
+/* Recipe list */
+.mn-list { list-style: none; margin: 0 0 var(--s-5); display: grid; gap: 0.55rem; }
+.mn-list li {
+  position: relative; padding-left: 1.6rem;
+  font-size: 1.02rem; line-height: 1.6; color: var(--ink-soft);
+}
+.mn-list li::before {
+  content: ""; position: absolute; left: 0; top: 0.55rem;
+  width: 0.55rem; height: 0.55rem; border-radius: 50%;
+  background: var(--terra);
+}
+.mn-list .cjk { color: var(--terra); }
+
+/* Instagram embed */
+.mn-embed { margin: var(--s-6) 0; display: flex; justify-content: center; }
+.mn-embed .instagram-media {
+  min-width: 280px !important; max-width: 540px !important; width: 100% !important;
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--line-soft) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
 /* Stats band */
 .mn-stats {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-4);
