@@ -87,6 +87,8 @@
 .mn-tag--research { background: #E3EDE4; color: var(--pine); }
 .mn-tag--news { background: #EFE7D9; color: var(--ink-soft); }
 .mn-tag--recipes { background: #F5E9D2; color: #7A5A18; }
+.mn-tag--pinned { background: var(--pine); color: var(--bone); }
+.mn-tag--pinned::before { content: "📌 "; font-size: 0.6rem; }
 .mn-excerpt { color: var(--ink-soft); font-size: var(--text-sm); line-height: 1.6; }
 .mn-meta {
   margin-top: auto; padding-top: var(--s-3);
