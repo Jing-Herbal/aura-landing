@@ -255,7 +255,7 @@ body.home.chrome-hidden .header { transform: translateY(calc(-100% - var(--annou
   position: absolute; top: 3px; right: 1px;
   min-width: 18px; height: 18px; padding: 0 4px;
   border-radius: var(--radius-pill); background: var(--terra); color: var(--cream);
-  font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600;
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
   display: flex; align-items: center; justify-content: center;
   transform: scale(0); transition: transform 0.3s var(--ease-out);
 }
@@ -386,7 +386,7 @@ body.home.chrome-hidden .header { transform: translateY(calc(-100% - var(--annou
 }
 .hero-chip .dot { width: 34px; height: 34px; border-radius: 50%; background: var(--jade); color: #fff; display: flex; align-items: center; justify-content: center; flex: none; }
 .hero-chip .dot svg { width: 18px; height: 18px; }
-.hero-chip .mono { display: block; font-weight: 400; color: var(--ink-mute); font-size: 0.68rem; }
+.hero-chip .mono { display: block; font-weight: 400; color: var(--ink-mute); font-size: 0.7rem; }
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; min-height: 0; }
   .hero-visual { order: -1; max-width: 460px; }
@@ -454,7 +454,7 @@ body.home.chrome-hidden .header { transform: translateY(calc(-100% - var(--annou
 .pc-top h3 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600; }
 .pc-price { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--ink-mute); white-space: nowrap; }
 .pc-desc { font-size: var(--text-sm); color: var(--ink-soft); margin: var(--s-2) 0 var(--s-5); }
-.pc-badge { position: absolute; top: var(--s-4); left: var(--s-4); z-index: 3; background: var(--ink); color: var(--cream); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 11px; border-radius: var(--radius-pill); }
+.pc-badge { position: absolute; top: var(--s-4); left: var(--s-4); z-index: 3; background: var(--ink); color: var(--cream); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 11px; border-radius: var(--radius-pill); }
 .product-card.is-soon .product-card-media::after { content: ""; position: absolute; inset: 0; background: rgba(30,24,17,0.06); }
 @media (max-width: 620px) { .product-row { grid-template-columns: 1fr; max-width: 380px; } }
 
@@ -491,7 +491,7 @@ body.home.chrome-hidden .header { transform: translateY(calc(-100% - var(--annou
 .stat .num { font-family: var(--font-display); font-size: clamp(1.9rem, 1.5rem + 1.4vw, 2.7rem); font-weight: 500; line-height: 1; display: flex; align-items: baseline; gap: 2px; }
 .stat .num small { font-size: 0.42em; font-family: var(--font-mono); }
 .stat .label { font-size: var(--text-xs); color: rgba(246,241,232,0.75); margin-top: var(--s-2); }
-.evidence-note { margin-top: var(--s-5); font-size: 0.68rem; font-family: var(--font-mono); color: rgba(246,241,232,0.55); max-width: 52ch; letter-spacing: 0.04em; line-height: 1.6; }
+.evidence-note { margin-top: var(--s-5); font-size: 0.7rem; font-family: var(--font-mono); color: rgba(246,241,232,0.55); max-width: 52ch; letter-spacing: 0.04em; line-height: 1.6; }
 .evidence-gallery { display: grid; gap: var(--s-3); }
 .eg-main { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 16 / 9; box-shadow: var(--shadow-lift); margin: 0; }
 .eg-main img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -553,7 +553,7 @@ body.home.chrome-hidden .header { transform: translateY(calc(-100% - var(--annou
   background: linear-gradient(to top, rgba(20,16,11,0.72), transparent);
   font-size: var(--text-sm); font-weight: 500;
 }
-.creator .cap .handle { font-family: var(--font-mono); font-size: 0.66rem; opacity: 0.85; display: block; margin-bottom: 2px; }
+.creator .cap .handle { font-family: var(--font-mono); font-size: 0.7rem; opacity: 0.85; display: block; margin-bottom: 2px; }
 /* 6-across UGC strip: narrower tiles → tighter, smaller captions */
 .creator .cap { padding: 1.9rem 0.7rem 0.75rem; font-size: 0.72rem; line-height: 1.3; }
 
@@ -597,8 +597,8 @@ body.home.chrome-hidden .header { transform: translateY(calc(-100% - var(--annou
 .plan .plan-name { font-weight: 600; font-size: var(--text-sm); }
 .plan .plan-desc { font-size: var(--text-xs); color: var(--ink-mute); }
 .plan .plan-price { font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 600; text-align: right; }
-.plan .plan-save { display: block; font-size: 0.68rem; color: var(--jade); font-weight: 600; letter-spacing: 0.06em; }
-.plan .badge { position: absolute; top: -9px; right: 14px; background: var(--terra); color: var(--cream); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 9px; border-radius: var(--radius-pill); }
+.plan .plan-save { display: block; font-size: 0.7rem; color: var(--jade); font-weight: 600; letter-spacing: 0.06em; }
+.plan .badge { position: absolute; top: -9px; right: 14px; background: var(--terra); color: var(--cream); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 9px; border-radius: var(--radius-pill); }
 .qty-row { display: flex; gap: var(--s-3); align-items: stretch; }
 .qty { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: var(--radius-pill); overflow: hidden; flex: none; }
 .qty button { width: 46px; height: 50px; display: flex; align-items: center; justify-content: center; transition: background-color 0.15s; font-size: 1.1rem; }
