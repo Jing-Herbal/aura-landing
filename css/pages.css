@@ -41,6 +41,13 @@
 .os-stat b { display: block; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.9rem, 1.3rem + 1.8vw, 2.9rem); color: var(--ink); white-space: nowrap; }
 .os-stat span { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); }
 
+.os-block--tight { padding: var(--s-8) 0; }
+.os-fact-row {
+  max-width: none; margin: var(--s-6) 0 0;
+  display: flex; flex-wrap: wrap; gap: var(--s-5) var(--s-8);
+}
+.os-fact-row .sd-fact { flex: 0 1 auto; }
+
 /* Mission band */
 .os-mission { background: var(--pine); color: var(--bone); padding: var(--s-10) 0; text-align: center; }
 .os-mission .eyebrow { color: var(--jade-dot); justify-content: center; }
