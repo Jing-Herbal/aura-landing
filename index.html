@@ -81,60 +81,80 @@
           <div class="sd-nourish" data-nourish aria-hidden="true">
             <svg viewBox="0 0 520 560" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <radialGradient id="nrGlowGrad" cx="50%" cy="42%" r="55%">
+                <radialGradient id="nrGlowGrad" cx="50%" cy="72%" r="60%">
                   <stop offset="0%" stop-color="#F2DFD2" stop-opacity="0.55"/>
                   <stop offset="55%" stop-color="#EBCDB9" stop-opacity="0.18"/>
                   <stop offset="100%" stop-color="#EBCDB9" stop-opacity="0"/>
                 </radialGradient>
-                <clipPath id="nrSkinClip"><rect x="40" y="300" width="440" height="220" rx="26"/></clipPath>
+                <clipPath id="nrSkinClip"><rect x="40" y="64" width="440" height="230" rx="26"/></clipPath>
               </defs>
 
-              <!-- stick sachet, tilted, pouring -->
+              <!-- rising nutrients in the body, en route to the skin -->
+              <g data-nr="dotsOut">
+                <circle cx="238" cy="470" r="6"   fill="#F6F1E8"/>
+                <circle cx="262" cy="486" r="4"   fill="#C05B3B"/>
+                <circle cx="220" cy="500" r="5"   fill="#EBCDB9"/>
+                <circle cx="280" cy="478" r="3.4" fill="#B8862B"/>
+                <circle cx="247" cy="492" r="4.6" fill="#F6F1E8"/>
+                <circle cx="296" cy="504" r="4"   fill="#A93F26"/>
+                <circle cx="226" cy="482" r="3.2" fill="#EBCDB9"/>
+                <circle cx="266" cy="472" r="5"   fill="#F2DFD2"/>
+                <circle cx="304" cy="490" r="3.4" fill="#C05B3B"/>
+                <circle cx="242" cy="508" r="4"   fill="#B8862B"/>
+              </g>
+
+              <!-- the stick you actually take: down in the body, feeding upward -->
               <g data-nr="stick">
-                <rect x="228" y="18" width="64" height="150" rx="12" transform="rotate(24 260 93)" fill="#FBF8F2"/>
-                <rect x="228" y="18" width="64" height="34" rx="12" transform="rotate(24 260 93)" fill="#A93F26"/>
-                <rect x="240" y="132" width="40" height="26" rx="6" transform="rotate(24 260 93)" fill="#6E1F1D"/>
+                <rect x="316" y="452" width="56" height="128" rx="11" transform="rotate(148 344 516)" fill="#FBF8F2"/>
+                <rect x="316" y="452" width="56" height="30" rx="11" transform="rotate(148 344 516)" fill="#A93F26"/>
+                <rect x="326" y="548" width="36" height="22" rx="5" transform="rotate(148 344 516)" fill="#6E1F1D"/>
               </g>
 
-              <!-- nutrient particles -->
-              <g data-nr="particles">
-                <circle cx="234" cy="168" r="6"  fill="#F6F1E8"/>
-                <circle cx="258" cy="176" r="4"  fill="#C05B3B"/>
-                <circle cx="216" cy="186" r="5"  fill="#EBCDB9"/>
-                <circle cx="276" cy="172" r="3.4" fill="#B8862B"/>
-                <circle cx="243" cy="182" r="4.6" fill="#F6F1E8"/>
-                <circle cx="292" cy="190" r="4"  fill="#A93F26"/>
-                <circle cx="222" cy="178" r="3.2" fill="#EBCDB9"/>
-                <circle cx="262" cy="170" r="5"  fill="#F2DFD2"/>
-                <circle cx="300" cy="184" r="3.4" fill="#C05B3B"/>
-                <circle cx="238" cy="192" r="4"  fill="#B8862B"/>
-              </g>
-
-              <!-- skin block -->
+              <!-- skin block: the destination, up at the surface -->
               <g clip-path="url(#nrSkinClip)">
-                <rect x="40" y="300" width="440" height="220" fill="#24442F"/>
-                <!-- dermis -->
-                <path d="M40 420 Q 150 404 260 420 T 480 420 V 520 H 40 Z" fill="#2E5A40" opacity="0.85"/>
+                <rect x="40" y="64" width="440" height="230" fill="#24442F"/>
                 <!-- epidermis -->
-                <path d="M40 356 Q 150 340 260 356 T 480 356 V 520 H 40 Z" fill="#3C7050" opacity="0.55"/>
-                <!-- collagen mesh: brightens as you scroll -->
-                <g data-nr="mesh" stroke="#EBCDB9" stroke-width="1.6" stroke-linecap="round">
-                  <path d="M70 470 L 120 430 L 170 468 L 220 428 L 270 466 L 320 426 L 370 464 L 420 428 L 458 462"/>
-                  <path d="M70 430 L 120 468 L 170 428 L 220 466 L 270 426 L 320 464 L 370 424 L 420 462 L 458 428"/>
+                <path d="M40 130 Q 150 114 260 130 T 480 130 V 64 H 40 Z" fill="#3C7050" opacity="0.55"/>
+                <!-- dermis band -->
+                <path d="M40 196 Q 150 180 260 196 T 480 196 V 294 H 40 Z" fill="#2E5A40" opacity="0.85"/>
+                <!-- nutrients arriving inside the dermis, rising -->
+                <g data-nr="dotsIn">
+                  <circle cx="120" cy="286" r="4.4" fill="#F2DFD2"/>
+                  <circle cx="180" cy="292" r="3.4" fill="#C05B3B"/>
+                  <circle cx="244" cy="288" r="5"   fill="#F6F1E8"/>
+                  <circle cx="308" cy="294" r="3.6" fill="#B8862B"/>
+                  <circle cx="368" cy="286" r="4.4" fill="#EBCDB9"/>
+                  <circle cx="424" cy="292" r="3.2" fill="#A93F26"/>
+                  <circle cx="150" cy="296" r="3"   fill="#EBCDB9"/>
+                  <circle cx="276" cy="298" r="4"   fill="#F2DFD2"/>
+                  <circle cx="340" cy="300" r="3.2" fill="#C05B3B"/>
+                  <circle cx="400" cy="298" r="4.2" fill="#F6F1E8"/>
                 </g>
-                <!-- inner glow -->
-                <rect data-nr="glow" x="40" y="300" width="440" height="220" fill="url(#nrGlowGrad)"/>
+                <!-- collagen mesh: brightens as nutrients arrive -->
+                <g data-nr="mesh" stroke="#EBCDB9" stroke-width="1.6" stroke-linecap="round">
+                  <path d="M70 250 L 120 210 L 170 248 L 220 208 L 270 246 L 320 206 L 370 244 L 420 208 L 458 242"/>
+                  <path d="M70 210 L 120 248 L 170 208 L 220 246 L 270 206 L 320 244 L 370 204 L 420 242 L 458 208"/>
+                </g>
+                <!-- inner glow rising toward the surface -->
+                <rect data-nr="glow" x="40" y="64" width="440" height="230" fill="url(#nrGlowGrad)"/>
                 <!-- surface line: dull → plump crossfade -->
-                <path data-nr="surf1" d="M40 332 Q 96 324 150 332 T 260 332 T 370 332 T 480 332" stroke="#DAD0BF" stroke-width="3" stroke-linecap="round" fill="none"/>
-                <path data-nr="surf2" d="M40 330 Q 96 314 150 330 T 260 330 T 370 330 T 480 330" stroke="#F6F1E8" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path data-nr="surf1" d="M40 98 Q 96 90 150 98 T 260 98 T 370 98 T 480 98" stroke="#DAD0BF" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path data-nr="surf2" d="M40 96 Q 96 80 150 96 T 260 96 T 370 96 T 480 96" stroke="#F6F1E8" stroke-width="4" stroke-linecap="round" fill="none"/>
                 <!-- sheen that sweeps across the plumped surface -->
-                <path data-nr="sheen" d="M120 322 Q 190 308 260 322" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="none" opacity="0"/>
+                <path data-nr="sheen" d="M120 88 Q 190 74 260 88" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="none" opacity="0"/>
+              </g>
+
+              <!-- the topical cream: sits on the surface, never gets in -->
+              <g data-nr="cream">
+                <ellipse cx="404" cy="56" rx="34" ry="12" fill="#FBF8F2"/>
+                <ellipse cx="404" cy="52" rx="22" ry="8" fill="#FFFFFF" opacity="0.8"/>
               </g>
 
               <!-- labels -->
-              <g data-nr="labels" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#F6F1E8" opacity="0.55">
-                <text x="40" y="288">SURFACE</text>
-                <text x="40" y="548">WHERE SKIN IS BUILT</text>
+              <g data-nr="labels" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#F6F1E8">
+                <text x="40" y="42" opacity="0.55">SURFACE — WHERE CREAMS STOP</text>
+                <text x="40" y="330" opacity="0.55">DERMIS — WHERE SKIN IS BUILT</text>
+                <text x="40" y="548" opacity="0.8">AURA WORKS FROM WITHIN</text>
               </g>
             </svg>
           </div>
@@ -357,13 +377,14 @@
       <div class="container sd-buy-grid">
         <div class="sd-buy-gallery reveal">
           <div class="sd-buy-main">
-            <img src="assets/gen/product-studio.jpg" alt="Jing Aura box and stick sachet" id="buy-main-img" width="2048" height="2048">
+            <img src="assets/aura-box-sachet.jpg" alt="Jing Aura box and stick sachet" id="buy-main-img" width="1600" height="1600">
           </div>
           <div class="sd-buy-thumbs" role="tablist" aria-label="Product photos">
-            <button class="is-active" data-thumb="assets/gen/product-studio.jpg" aria-label="Studio shot"><img src="assets/gen/product-studio.jpg" alt=""></button>
-            <button data-thumb="assets/gen/hero-banner.jpg" aria-label="In the home"><img src="assets/gen/hero-banner.jpg" alt=""></button>
-            <button data-thumb="assets/gen/ritual-1.jpg" aria-label="The ritual"><img src="assets/gen/ritual-1.jpg" alt=""></button>
-            <button data-thumb="assets/gen/hands-pour.jpg" aria-label="Pouring a stick"><img src="assets/gen/hands-pour.jpg" alt=""></button>
+            <button class="is-active" data-thumb="assets/aura-box-sachet.jpg" aria-label="Box and sachet"><img src="assets/aura-box-sachet.jpg" alt=""></button>
+            <button data-thumb="assets/aura-powder.jpg" aria-label="The powder"><img src="assets/aura-powder.jpg" alt=""></button>
+            <button data-thumb="assets/aura-pour.jpg" aria-label="Pouring into a glass"><img src="assets/aura-pour.jpg" alt=""></button>
+            <button data-thumb="assets/aura-swipe.jpg" aria-label="Powder texture"><img src="assets/aura-swipe.jpg" alt=""></button>
+            <button data-thumb="assets/aura-nutrition.jpg" aria-label="Nutrition information"><img src="assets/aura-nutrition.jpg" alt=""></button>
           </div>
         </div>
         <div class="sd-buy-card reveal">
@@ -478,7 +499,7 @@
   <!-- ============ STICKY BUY BAR ============ -->
   <div class="sd-stickybar" data-stickybar aria-hidden="true">
     <div class="container sd-stickybar-inner">
-      <img src="assets/gen/product-studio.jpg" alt="" width="44" height="44">
+      <img src="assets/aura-box-sachet.jpg" alt="" width="44" height="44">
       <div class="sd-stickybar-meta">
         <strong>Aura — daily skin blend</strong>
         <span>A$75 / month · free shipping</span>
