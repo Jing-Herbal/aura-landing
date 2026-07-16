@@ -1,0 +1,159 @@
+/* ============================================================
+   JING — mornings.css
+   "Mornings" journal: index (masthead, category filters, cards)
+   and article detail pages. Layers on styles.css tokens.
+   ============================================================ */
+
+/* ---------- Index masthead ---------- */
+.mn-masthead { background: var(--bone); padding: var(--s-9) 0 var(--s-6); }
+.mn-masthead .display { margin: var(--s-4) 0; }
+.mn-masthead .lead { max-width: 52ch; }
+
+/* ---------- Category filters ---------- */
+.mn-filters {
+  display: flex; flex-wrap: wrap; gap: var(--s-3);
+  margin-top: var(--s-6);
+}
+.mn-filter {
+  border: 1px solid var(--line); background: transparent;
+  border-radius: var(--radius-pill); padding: 0.5rem 1.1rem;
+  font-family: var(--font-body); font-size: var(--text-sm); font-weight: 500;
+  color: var(--ink-soft); cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.mn-filter:hover { border-color: var(--ink-soft); color: var(--ink); }
+.mn-filter.is-active { background: var(--pine); border-color: var(--pine); color: var(--bone); }
+
+/* ---------- Cards grid ---------- */
+.mn-grid-wrap { background: var(--bone); padding: var(--s-6) 0 var(--s-9); }
+.mn-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+@media (max-width: 1024px) { .mn-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 680px) { .mn-grid { grid-template-columns: 1fr; } }
+
+.mn-card {
+  display: flex; flex-direction: column;
+  background: var(--cream); border-radius: var(--radius-lg);
+  overflow: hidden; box-shadow: var(--shadow-soft);
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s;
+}
+.mn-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+.mn-card.is-hidden { display: none; }
+.mn-card--featured { grid-column: 1 / -1; }
+
+/* Typographic cover */
+.mn-cover {
+  position: relative; display: flex; flex-direction: column; justify-content: space-between;
+  aspect-ratio: 16 / 9; padding: var(--s-5);
+  background: var(--pine); color: var(--bone);
+}
+.mn-card--featured .mn-cover { aspect-ratio: auto; min-height: 320px; }
+.mn-cover .mono {
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--jade-dot);
+}
+.mn-cover-title {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(1.5rem, 1rem + 2vw, 2.6rem); line-height: 1.12;
+  max-width: 22ch;
+}
+.mn-cover-cjk {
+  position: absolute; right: var(--s-5); top: var(--s-5);
+  font-family: var(--font-cjk); color: color-mix(in srgb, var(--bone) 30%, transparent);
+  font-size: 1.1rem; writing-mode: vertical-rl; letter-spacing: 0.35em;
+}
+
+.mn-card-body { padding: var(--s-5); display: flex; flex-direction: column; gap: var(--s-3); flex: 1; }
+.mn-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.mn-tag {
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 0.28rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: var(--terra-tint); color: var(--terra-deep);
+}
+.mn-tag--research { background: #E3EDE4; color: var(--pine); }
+.mn-tag--news { background: #EFE7D9; color: var(--ink-soft); }
+.mn-tag--recipes { background: #F5E9D2; color: #7A5A18; }
+.mn-excerpt { color: var(--ink-soft); font-size: var(--text-sm); line-height: 1.6; }
+.mn-meta {
+  margin-top: auto; padding-top: var(--s-3);
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+  color: var(--ink-mute);
+}
+
+/* Empty state */
+.mn-empty {
+  display: none; text-align: center; padding: var(--s-8) var(--s-5);
+  color: var(--ink-mute); font-size: var(--text-base);
+}
+.mn-empty .cjk { color: var(--terra); }
+.mn-empty.is-visible { display: block; }
+
+/* ---------- Article page ---------- */
+.mn-article-hero { background: var(--bone); padding: var(--s-8) 0 var(--s-6); }
+.mn-back {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-mute); margin-bottom: var(--s-5);
+  transition: color 0.2s;
+}
+.mn-back:hover { color: var(--terra); }
+.mn-article-hero h1 {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(2rem, 1.2rem + 3.4vw, 3.8rem); line-height: 1.1;
+  max-width: 20ch; margin: var(--s-4) 0;
+}
+.mn-byline {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
+  font-size: var(--text-sm); color: var(--ink-mute);
+}
+.mn-byline .sep { opacity: 0.5; }
+.mn-hero-label {
+  margin-top: var(--s-6); font-family: var(--font-mono); letter-spacing: 0.3em;
+  font-size: var(--text-xs); color: var(--terra);
+}
+
+.mn-prose { background: var(--bone); padding: 0 0 var(--s-9); }
+.mn-prose-inner { max-width: 720px; }
+.mn-prose p { font-size: 1.06rem; line-height: 1.75; color: var(--ink-soft); margin-bottom: var(--s-5); }
+.mn-prose p strong { color: var(--ink); }
+.mn-prose h2 {
+  font-family: var(--font-display); font-weight: 500; font-size: var(--text-2xl);
+  color: var(--ink); margin: var(--s-7) 0 var(--s-4);
+}
+.mn-prose .mn-sign { font-style: italic; color: var(--ink-mute); }
+
+/* Stats band */
+.mn-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-4);
+  margin: var(--s-7) 0;
+}
+@media (max-width: 680px) { .mn-stats { grid-template-columns: 1fr; } }
+.mn-stat {
+  background: var(--pine); color: var(--bone);
+  border-radius: var(--radius-lg); padding: var(--s-5);
+}
+.mn-stat b {
+  display: block; font-family: var(--font-display); font-weight: 500;
+  font-size: var(--text-3xl); color: var(--clay-2); margin-bottom: 0.3rem;
+}
+.mn-stat span {
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: color-mix(in srgb, var(--bone) 72%, transparent);
+  line-height: 1.5; display: block;
+}
+
+/* Read-more + about boxes */
+.mn-box {
+  background: var(--cream); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); padding: var(--s-5); margin: var(--s-5) 0;
+}
+.mn-box .mono {
+  font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--terra); display: block; margin-bottom: 0.5rem;
+}
+.mn-box h3 { font-family: var(--font-display); font-weight: 500; font-size: var(--text-xl); margin-bottom: 0.4rem; }
+.mn-box p { font-size: var(--text-sm); line-height: 1.65; color: var(--ink-soft); margin: 0; }
+.mn-box a { font-weight: 600; color: var(--ink); border-bottom: 1.5px solid var(--ink); }
+.mn-box a:hover { color: var(--terra); border-color: var(--terra); }
+
+/* Footer CTA strip shared with landing uses .sd-final from landing.css */
