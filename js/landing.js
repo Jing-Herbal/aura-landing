@@ -112,6 +112,8 @@
   const editorialMedia = document.querySelector("[data-parallax-media]");
   const stickybar = document.querySelector("[data-stickybar]");
   const buySection = document.getElementById("buy");
+  const bundleMedia = document.querySelector(".sd-bundle-media");
+  const finalPaper = document.querySelector(".sd-final--paper");
 
   let ticking = false;
   function onFrame() {
@@ -148,6 +150,13 @@
         "translateY(" + (par * 9).toFixed(2) + "%)";
     }
 
+    if (!reduced && bundleMedia) {
+      const r = bundleMedia.getBoundingClientRect();
+      const vh = window.innerHeight || 800;
+      const par = clamp((vh - r.top) / (vh + r.height), 0, 1) - 0.5;
+      bundleMedia.style.setProperty("--par", par.toFixed(3));
+    }
+
     if (stickybar && hero && buySection) {
       const pastHero = hero.getBoundingClientRect().bottom < 0;
       const buyR = buySection.getBoundingClientRect();
@@ -171,8 +180,9 @@
 
   /* ---------- Play stage/hero videos only when visible ---------- */
   const mechVideo = document.querySelector("[data-mech-video]");
+  const ambientVideo = document.querySelector("[data-ambient-video]");
   if ("IntersectionObserver" in window) {
-    const vids = [heroVideo, mechVideo].filter(Boolean);
+    const vids = [heroVideo, mechVideo, ambientVideo].filter(Boolean);
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         const v = e.target;
@@ -222,6 +232,22 @@
       es.forEach((e) => { if (!e.isIntersecting) pauseCreator(e.target); }),
       { threshold: 0.4 });
     creators.forEach((c) => io.observe(c));
+  }
+
+  /* ---------- Final CTA: warm bloom follows the cursor ---------- */
+  if (finalPaper && !reduced && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    let raf = 0, mx = 0, my = 0;
+    finalPaper.addEventListener("pointermove", (e) => {
+      const r = finalPaper.getBoundingClientRect();
+      mx = e.clientX - r.left; my = e.clientY - r.top;
+      if (!raf) raf = requestAnimationFrame(() => {
+        finalPaper.style.setProperty("--mx", mx + "px");
+        finalPaper.style.setProperty("--my", my + "px");
+        raf = 0;
+      });
+    });
+    finalPaper.addEventListener("pointerenter", () => finalPaper.classList.add("has-cursor"));
+    finalPaper.addEventListener("pointerleave", () => finalPaper.classList.remove("has-cursor"));
   }
 
   /* ---------- Testimonial wall: duplicate tracks for seamless loop ---------- */
