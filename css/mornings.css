@@ -79,7 +79,7 @@
 }
 .mn-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
 .mn-tag {
-  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em;
   text-transform: uppercase; padding: 0.28rem 0.65rem;
   border-radius: var(--radius-pill);
   background: var(--terra-tint); color: var(--terra-deep);
@@ -88,7 +88,7 @@
 .mn-tag--news { background: #EFE7D9; color: var(--ink-soft); }
 .mn-tag--recipes { background: #F5E9D2; color: #7A5A18; }
 .mn-tag--pinned { background: var(--pine); color: var(--bone); }
-.mn-tag--pinned::before { content: "📌 "; font-size: 0.6rem; }
+.mn-tag--pinned::before { content: "📌 "; font-size: 0.7rem; }
 .mn-excerpt { color: var(--ink-soft); font-size: var(--text-sm); line-height: 1.6; }
 .mn-meta {
   margin-top: auto; padding-top: var(--s-3);
@@ -175,7 +175,7 @@
   font-size: var(--text-3xl); color: var(--clay-2); margin-bottom: 0.3rem;
 }
 .mn-stat span {
-  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em;
   text-transform: uppercase; color: color-mix(in srgb, var(--bone) 72%, transparent);
   line-height: 1.5; display: block;
 }
@@ -186,7 +186,7 @@
   border-radius: var(--radius); padding: var(--s-5); margin: var(--s-5) 0;
 }
 .mn-box .mono {
-  font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+  font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--terra); display: block; margin-bottom: 0.5rem;
 }
 .mn-box h3 { font-family: var(--font-display); font-weight: 500; font-size: var(--text-xl); margin-bottom: 0.4rem; }
