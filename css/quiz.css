@@ -1,0 +1,115 @@
+/* ============================================================
+   JING — quiz.css
+   "Build your morning" ritual quiz (quiz.html).
+   Layers on styles.css + landing.css.
+   ============================================================ */
+
+.qz-wrap {
+  background: var(--bone);
+  min-height: 80vh;
+  padding: var(--s-7) 0 var(--s-9);
+}
+.qz-inner { max-width: 680px; margin: 0 auto; padding: 0 var(--s-5); }
+
+/* Progress */
+.qz-progress {
+  height: 3px; background: var(--line-soft); border-radius: 2px;
+  margin-bottom: var(--s-7); overflow: hidden;
+}
+.qz-progress i {
+  display: block; height: 100%; width: 0;
+  background: var(--terra); border-radius: 2px;
+  transition: width 0.45s var(--ease-out);
+}
+
+/* Screen */
+.qz-screen { animation: qzIn 0.4s var(--ease-out); }
+@keyframes qzIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.qz-back {
+  background: none; border: none; cursor: pointer;
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-mute);
+  padding: 0 0 var(--s-4); display: inline-block;
+}
+.qz-back:hover { color: var(--terra); }
+
+.qz-count {
+  font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--terra); margin-bottom: var(--s-3);
+}
+.qz-title {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(1.7rem, 1.2rem + 2.2vw, 2.6rem); line-height: 1.15;
+  color: var(--ink); margin-bottom: var(--s-3);
+  text-wrap: balance;
+}
+.qz-sub { color: var(--ink-soft); line-height: 1.6; margin-bottom: var(--s-6); max-width: 52ch; }
+.qz-body { color: var(--ink-soft); line-height: 1.7; margin-bottom: var(--s-4); }
+.qz-body strong { color: var(--ink); }
+.qz-fine { font-size: var(--text-xs); color: var(--ink-mute); line-height: 1.6; margin: var(--s-3) 0; }
+
+/* Options */
+.qz-opts { display: grid; gap: var(--s-3); }
+.qz-opt {
+  text-align: left; cursor: pointer;
+  background: var(--cream); border: 1.5px solid var(--line-soft);
+  border-radius: var(--radius); padding: 1rem 1.2rem;
+  font-family: var(--font-body); font-size: var(--text-base); color: var(--ink);
+  transition: border-color 0.2s, background 0.2s, transform 0.25s var(--ease-out);
+  display: flex; flex-direction: column; gap: 0.15rem;
+}
+.qz-opt:hover { border-color: var(--terra); transform: translateY(-1px); }
+.qz-opt.is-on { border-color: var(--terra); background: var(--terra-tint); }
+.qz-opt-label { font-weight: 600; }
+.qz-opt-sub { font-size: var(--text-sm); color: var(--ink-mute); }
+
+.qz-opts--multi { grid-template-columns: 1fr 1fr; }
+@media (max-width: 560px) { .qz-opts--multi { grid-template-columns: 1fr; } }
+.qz-opt--chip { padding: 0.75rem 1rem; font-size: var(--text-sm); font-weight: 500; }
+
+.qz-row { margin-bottom: var(--s-5); }
+.qz-row-label { font-weight: 600; color: var(--ink); margin-bottom: var(--s-3); }
+.qz-row-opts { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+.qz-row-opts .qz-opt--chip { flex: 1 1 auto; text-align: center; align-items: center; }
+
+.qz-next { margin-top: var(--s-6); }
+.qz-next:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Result blocks */
+.qz-block {
+  background: var(--cream); border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg); padding: var(--s-5) var(--s-6);
+  margin: var(--s-4) 0;
+}
+.qz-block-kicker {
+  font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--terra); display: block; margin-bottom: var(--s-3);
+}
+.qz-block .qz-body:last-child { margin-bottom: 0; }
+.qz-dose { background: var(--pine); border-color: var(--pine); }
+.qz-dose .qz-block-kicker { color: var(--jade-dot); }
+.qz-dose .qz-body { color: color-mix(in srgb, var(--bone) 88%, transparent); }
+.qz-offer { border: 1.5px solid var(--terra); }
+.qz-offer h2 { font-family: var(--font-display); font-weight: 500; font-size: var(--text-2xl); margin-bottom: var(--s-3); }
+.qz-offer .btn { margin-top: var(--s-2); }
+.qz-bloom { background: #EAF3EA; border-color: #CBE0D2; }
+.qz-bloom .qz-block-kicker { color: var(--jade); }
+
+/* Email */
+.qz-email h2 { font-family: var(--font-display); font-weight: 500; font-size: var(--text-xl); margin-bottom: 0.4rem; }
+.qz-email p { color: var(--ink-soft); font-size: var(--text-sm); margin-bottom: var(--s-4); }
+.qz-email-form { display: flex; gap: var(--s-3); }
+@media (max-width: 560px) { .qz-email-form { flex-direction: column; } }
+.qz-email-form input {
+  flex: 1; border: 1px solid var(--line); background: var(--paper);
+  border-radius: var(--radius-pill); padding: 0.8rem 1.2rem;
+  font-family: inherit; font-size: var(--text-sm); color: var(--ink);
+}
+.qz-email-optional { display: grid; grid-template-columns: 180px 1fr; gap: var(--s-3); margin-top: var(--s-3); }
+@media (max-width: 560px) { .qz-email-optional { grid-template-columns: 1fr; } }
+.qz-email-optional select, .qz-email-optional input {
+  border: 1px solid var(--line-soft); background: var(--paper);
+  border-radius: var(--radius); padding: 0.65rem 0.9rem;
+  font-family: inherit; font-size: var(--text-xs); color: var(--ink-soft);
+}
