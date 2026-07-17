@@ -323,6 +323,27 @@
         data.append("email_address_check", "");
         data.append("locale", "en");
         await fetch(BREVO_FORM_URL, { method: "POST", body: data, mode: "no-cors" });
+        // Brevo tracker: writes the segment attributes onto the contact
+        if (window.Brevo) {
+          Brevo.push(["identify", {
+            identifiers: { email_id: email.value },
+            attributes: {
+              VEHICLE: state.v || "",
+              EVIDENCE: state.e || "",
+              ADHERENCE: state.a === "low2" ? "low" : (state.a || ""),
+              NUTRIENT: state._n || nutrient(),
+              ROUTINE_DEPTH: state._rd || routineDepth(),
+              BLOOM_INTEREST: state.b || "no",
+              GATE_HELD: gateHeld,
+              QUIZ_COMPLETED_AT: new Date().toISOString().slice(0, 10),
+              AGE_RANGE: root.querySelector("[data-qz-age]")?.value || "",
+              SELF_DESC: root.querySelector("[data-qz-self]")?.value || "",
+            },
+          }]);
+          Brevo.push(["track", "quiz_completed", { email: email.value }, {
+            gate_held: gateHeld, adherence: state.a === "low2" ? "low" : (state.a || ""),
+          }]);
+        }
         try {
           localStorage.setItem("jing-quiz-profile", JSON.stringify({
             email: email.value,
