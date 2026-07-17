@@ -112,6 +112,14 @@
   const editorialMedia = document.querySelector("[data-parallax-media]");
   const stickybar = document.querySelector("[data-stickybar]");
   const buySection = document.getElementById("buy");
+
+  /* Section rail */
+  const rail = document.querySelector("[data-rail]");
+  const railDots = rail ? Array.from(rail.querySelectorAll("[data-rail-for]")) : [];
+  const railSections = railDots
+    .map((d) => document.getElementById(d.dataset.railFor))
+    .filter(Boolean);
+  const railDark = new Set(["top", "thesis", "inside"]);
   const bundleMedia = document.querySelector(".sd-bundle-media");
   const finalPaper = document.querySelector(".sd-final--paper");
 
@@ -155,6 +163,14 @@
       const vh = window.innerHeight || 800;
       const par = clamp((vh - r.top) / (vh + r.height), 0, 1) - 0.5;
       bundleMedia.style.setProperty("--par", par.toFixed(3));
+    }
+
+    if (rail && railSections.length) {
+      const probe = window.scrollY + window.innerHeight * 0.45;
+      let idx = 0;
+      railSections.forEach((s, i) => { if (s.offsetTop <= probe) idx = i; });
+      railDots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
+      rail.classList.toggle("on-dark", railDark.has(railDots[idx].dataset.railFor));
     }
 
     if (stickybar && hero && buySection) {
