@@ -309,6 +309,17 @@
       try {
         const data = new FormData();
         data.append("EMAIL", email.value);
+        // Segment attributes: stored by Brevo once these fields exist on the form
+        data.append("VEHICLE", state.v || "");
+        data.append("EVIDENCE", state.e || "");
+        data.append("ADHERENCE", state.a === "low2" ? "low" : (state.a || ""));
+        data.append("NUTRIENT", state._n || nutrient());
+        data.append("ROUTINE_DEPTH", state._rd || routineDepth());
+        data.append("BLOOM_INTEREST", state.b || "no");
+        data.append("GATE_HELD", gateHeld ? "true" : "false");
+        data.append("QUIZ_COMPLETED_AT", new Date().toISOString().slice(0, 10));
+        data.append("AGE_RANGE", root.querySelector("[data-qz-age]")?.value || "");
+        data.append("SELF_DESC", root.querySelector("[data-qz-self]")?.value || "");
         data.append("email_address_check", "");
         data.append("locale", "en");
         await fetch(BREVO_FORM_URL, { method: "POST", body: data, mode: "no-cors" });
