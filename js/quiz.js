@@ -240,9 +240,9 @@
     none: "You said your mornings are a rush. So anchor it to something that already happens. Kettle on, stick in, done in ten seconds.",
   };
   const NUTRIENTS = {
-    steady: "You're already eating well. Aura sits on top of that, not in place of it. One stick brings both nutrients to 100% NRV on the days food doesn't.",
-    patchy: "Food first, always. On the days it slips, one stick puts Vitamin C and Zinc back at 100% NRV.",
-    thin: "Start with the plate. Genuinely. Then one stick holds both nutrients at 100% NRV while you do.",
+    steady: "You're already eating well. Aura sits on top of that, not in place of it. One stick tops up both nutrients on the days food doesn't.",
+    patchy: "Food first, always. On the days it slips, one stick tops Vitamin C and Zinc back up.",
+    thin: "Start with the plate. Genuinely. Then one stick holds both nutrients steady while you do.",
   };
   const ROUTINES = {
     light: "You keep it simple. Aura fits that. One stick, no steps to remember.",
@@ -408,8 +408,8 @@
 
       <div class="qz-block qz-dose">
         <p class="mono qz-block-kicker">The dose, printed</p>
-        <p class="qz-body">Tremella 2,500 mg. Goji 500 mg. Schisandra 500 mg. Astragalus 9 mg, at the level permitted for foods.<br>Vitamin C 80 mg. Zinc 10 mg. Both at 100% NRV.</p>
-        <p class="qz-body">Vitamin C contributes to normal collagen formation for the normal function of skin. Zinc contributes to the maintenance of normal skin.</p>
+        <p class="qz-body">Tremella 2,500 mg. Goji 500 mg. Schisandra 500 mg. Astragalus 9 mg, at the level permitted for foods.<br>Vitamin C 80 mg. Zinc 10 mg.</p>
+        <p class="qz-body">Vitamin C contributes to normal collagen formation for the normal function of skin. Zinc contributes to normal skin structure. Both are permitted food-health relationships under FSANZ Standard 1.2.7, Schedule 4.</p>
         <p class="qz-body">The four botanicals are named for what they are and dosed where you can see them. They carry no skin claims, and we're not going to invent any.</p>
       </div>
 
@@ -428,7 +428,7 @@
         <p class="qz-body"><strong>Week 1.</strong> Nothing. This is not a filter.<br>
         <strong>Week 4.</strong> One full skin cycle. Roughly 28 days.<br>
         <strong>Week 8.</strong> Where most members make up their minds.</p>
-        <p class="qz-body">If you don't feel the difference in 30 days, we refund your first box in full.</p>
+        <p class="qz-body">If Aura isn't for you after 30 days, we refund your first box in full.</p>
       </div>
 
       <div class="qz-block qz-offer">
