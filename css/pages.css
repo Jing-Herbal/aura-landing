@@ -155,6 +155,49 @@
 .pd-dose-table { width: 100%; border-collapse: collapse; }
 .pd-dose-table td { padding: 0.45rem 0; border-bottom: 1px dashed var(--line-soft); }
 .pd-dose-table td:last-child { text-align: right; font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink); }
+/* Honest timeline */
+.pd-expect { background: var(--cream); padding: var(--s-9) 0; }
+.pd-expect-grid {
+  display: grid; grid-template-columns: 1fr 1.15fr; gap: var(--s-8);
+  align-items: start;
+}
+@media (max-width: 900px) { .pd-expect-grid { grid-template-columns: 1fr; } }
+.pd-expect-media { position: sticky; top: calc(var(--announce-h) + 100px); }
+@media (max-width: 900px) { .pd-expect-media { position: static; max-width: 420px; } }
+.pd-expect-media img {
+  width: 100%; height: auto; border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lift); display: block; aspect-ratio: 4 / 5; object-fit: cover;
+}
+.pd-tl { position: relative; padding-left: 2rem; }
+.pd-tl::before {
+  content: ""; position: absolute; left: 7px; top: 14px; bottom: 26px;
+  width: 2px; background: var(--line);
+}
+.pd-tl-item { position: relative; padding-bottom: var(--s-7); }
+.pd-tl-item:last-child { padding-bottom: 0; }
+.pd-tl-item::before {
+  content: ""; position: absolute; left: -2rem; top: 8px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--cream); border: 2.5px solid var(--pine);
+  margin-left: 0;
+}
+.pd-tl-day {
+  display: inline-block; font-family: var(--font-mono); font-size: 0.7rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--pine); color: var(--bone);
+  padding: 0.4rem 0.9rem; border-radius: var(--radius-pill);
+  margin-bottom: var(--s-3);
+}
+.pd-tl-item h3 {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: var(--text-xl); color: var(--ink); margin-bottom: 0.4rem;
+}
+.pd-tl-item p { color: var(--ink-soft); line-height: 1.7; max-width: 52ch; }
+.pd-tl-foot {
+  margin-top: var(--s-6); font-size: var(--text-xs); color: var(--ink-mute);
+  line-height: 1.6; max-width: 56ch;
+}
+
 .pd-reviews { background: var(--cream); padding: var(--s-9) 0; }
 .pd-review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
 @media (max-width: 900px) { .pd-review-grid { grid-template-columns: 1fr; } }
